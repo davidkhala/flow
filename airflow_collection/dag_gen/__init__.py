@@ -1,4 +1,3 @@
-from typing import Callable
 
 from airflow import DAG
 from airflow.models.dag import ScheduleArg
@@ -9,7 +8,7 @@ class DAGGenerator:
     dag: DAG
 
     def __init__(self, dag_id, schedule: ScheduleArg, default_args: dict):
-        self.dag = DAG(dag_id, schedule, default_args)
+        self.dag = DAG(dag_id, schedule=schedule, default_args=default_args)
 
     def add_task(self, python_callable_task: PythonOperator):
         self.dag.add_task(python_callable_task)
