@@ -13,7 +13,6 @@ up(){
   # By default, the Helm chart is configured to use the `CeleryExecutor` which is why there is a `airflow-worker` and `airflow-redis` service. 
   
   
-  kubectl port-forward svc/airflow-webserver 8080:8080 -n ${k8sNamespace} # Make it localhost accessible. Note: doesn't work on cloud shell 
   
   
   
