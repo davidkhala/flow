@@ -37,4 +37,10 @@ setLocal(){
   # http://localhost:8080/
   kubectl port-forward svc/$RELEASE_NAME-webserver 8080:8080 --namespace $NAMESPACE
 }
+
+status(){
+  kubectl get pods --namespace ${k8sNamespace}
+  helm list --namespace ${k8sNamespace}
+}
+
 $@
