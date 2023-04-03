@@ -1,6 +1,7 @@
 clusterName=${cluster:-airflow-cluster-name}
 region=${region:-asia-east2}
 k8sNamespace=${namespace:-airflow}
+helmName=${name:-airflow}
 
 
 up(){
@@ -8,6 +9,13 @@ up(){
   gcloud container clusters get-credentials ${clusterName} --region $region
   kubectl create namespace ${k8sNamespace}
   helm repo add apache-airflow https://airflow.apache.org
+  helm upgrade --install ${helmName} apache-airflow/airflow -n ${k8sNamespace} --debug
+  # By default, the Helm chart is configured to use the `CeleryExecutor` which is why there is a `airflow-worker` and `airflow-redis` service. 
+  
+  kubectl port-forward svc/airflow-webserver 8080:8080 -n ${k8sNamespace} # Make it localhost accessible
+  
+  # We will change this to the `LocalExecutor`.
+  
 }
 down(){
   
