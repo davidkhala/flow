@@ -15,7 +15,8 @@ up() {
   # helm install/upgrade step can last for minutes
   helm upgrade --install ${helmName} apache-airflow/airflow -n ${k8sNamespace} --debug
   # post-install, please wait until airflow-worker is up and running
-    
+  helm install ${helmName} apache-airflow/airflow --namespace ${k8sNamespace} --set-string "env[0].name=AIRFLOW__CORE__LOAD_EXAMPLES" --set-string "env[0].value=True"
+  
   kubectl create secret generic airflow-postgresql -n ${k8sNamespace} --from-literal=password='postgres' --dry-run=client -o yaml | kubectl apply -f -
   
   helm show values apache-airflow/airflow > values.yaml
@@ -31,5 +32,9 @@ down() {
   kubectl delete namespace ${k8sNamespace}
   gcloud container clusters delete ${clusterName} --region $region -q
 
+}
+setLocal(){
+  # http://localhost:8080/
+  kubectl port-forward svc/$RELEASE_NAME-webserver 8080:8080 --namespace $NAMESPACE
 }
 $@
