@@ -14,7 +14,7 @@ up() {
   helm repo update
   # helm install/upgrade step can last for minutes
   helm upgrade --install ${helmName} apache-airflow/airflow -n ${k8sNamespace} --debug
-  # By default, the Helm chart is configured to use the `CeleryExecutor` which is why there is a `airflow-worker` and `airflow-redis` service. 
+  # post-install, please wait until airflow-worker is up and running
     
   kubectl create secret generic airflow-postgresql -n ${k8sNamespace} --from-literal=password='postgres' --dry-run=client -o yaml | kubectl apply -f -
   
