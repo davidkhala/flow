@@ -4,7 +4,7 @@ k8sNamespace=${namespace:-airflow}
 helmName=${name:-airflow}
 
 
-up(){
+up() {
   gcloud container clusters create ${clusterName} --machine-type n1-standard-4 --num-nodes 1 --region $region # TODO consider k8s autoscale here.
   gcloud container clusters get-credentials ${clusterName} --region $region
   kubectl create namespace ${k8sNamespace}
@@ -22,7 +22,8 @@ up(){
   helm upgrade --install airflow apache-airflow/airflow -n ${k8sNamespace} -f values.yaml --debug
   
 }
-down(){
-  
+down() {
+  helm delete airflow --namespace ${k8sNamespace}
+
 }
 $@
