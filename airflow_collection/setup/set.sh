@@ -24,7 +24,7 @@ up() {
   # - change `.executor` from `CeleryExecutor` to `LocalExecutor`
   # - change `.webserver.service.type` from `ClusterIP` to `LoadBalancer`
   
-  helm upgrade --install airflow apache-airflow/airflow -n ${k8sNamespace} -f values.yaml --debug
+  helm upgrade --install ${helmName} apache-airflow/airflow -n ${k8sNamespace} -f values.yaml --debug
   
 }
 down() {
@@ -35,7 +35,7 @@ down() {
 }
 setLocal(){
   # http://localhost:8080/
-  kubectl port-forward svc/$RELEASE_NAME-webserver 8080:8080 --namespace $NAMESPACE
+  kubectl port-forward svc/${helmName}-webserver 8080:8080 --namespace ${k8sNamespace}
 }
 
 status(){
