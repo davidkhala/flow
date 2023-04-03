@@ -1,0 +1,4 @@
+executor: "LocalExecutor"
+webserver:
+  service:
+    type: LoadBalancer
