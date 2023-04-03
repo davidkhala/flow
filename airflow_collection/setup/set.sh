@@ -29,6 +29,7 @@ up() {
 down() {
   helm delete ${helmName} --namespace ${k8sNamespace}
   kubectl delete namespace ${k8sNamespace}
+  gcloud container clusters delete ${clusterName} --region $region -q
 
 }
 $@
