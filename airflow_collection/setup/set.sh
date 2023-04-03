@@ -14,7 +14,10 @@ up(){
     
   
   helm show values apache-airflow/airflow > values.yaml
-  # TODO manual edit to values.yaml change `CeleryExecutor` to `LocalExecutor`, `ClusterIP` as webserver service type to `LoadBalancer`
+  # TODO manual edit to values.yaml 
+  # - change `.executor` from `CeleryExecutor` to `LocalExecutor`
+  # - change `.webserver.service.type` from `ClusterIP` to `LoadBalancer`
+  # - Fill the masked postgresql credential in `.postgresql.auth.username` and `.postgresql.auth.password`
   
   helm upgrade --install airflow apache-airflow/airflow -n ${k8sNamespace} -f values.yaml --debug
   
