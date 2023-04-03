@@ -11,12 +11,12 @@ up(){
   helm repo add apache-airflow https://airflow.apache.org
   helm upgrade --install ${helmName} apache-airflow/airflow -n ${k8sNamespace} --debug
   # By default, the Helm chart is configured to use the `CeleryExecutor` which is why there is a `airflow-worker` and `airflow-redis` service. 
+    
   
+  helm show values apache-airflow/airflow > values.yaml
+  # TODO manual edit to values.yaml change `CeleryExecutor` to `LocalExecutor`, `ClusterIP` as webserver service type to `LoadBalancer`
   
-  
-  
-  
-  # We will change this to the `LocalExecutor`.
+  helm upgrade --install airflow apache-airflow/airflow -n ${k8sNamespace} -f values.yaml --debug
   
 }
 down(){
