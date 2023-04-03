@@ -15,7 +15,7 @@ up() {
   # helm install/upgrade step can last for minutes
   helm upgrade --install ${helmName} apache-airflow/airflow -n ${k8sNamespace} --debug
   # post-install, please wait until airflow-worker is up and running
-  helm install ${helmName} apache-airflow/airflow --namespace ${k8sNamespace} --set-string "env[0].name=AIRFLOW__CORE__LOAD_EXAMPLES" --set-string "env[0].value=True"
+  
   
   kubectl create secret generic airflow-postgresql -n ${k8sNamespace} --from-literal=password='postgres' --dry-run=client -o yaml | kubectl apply -f -
   
@@ -41,6 +41,9 @@ setLocal(){
 status(){
   kubectl get pods --namespace ${k8sNamespace}
   helm list --namespace ${k8sNamespace}
+}
+sampleInstall(){
+  helm upgrade --install ${helmName} apache-airflow/airflow --namespace ${k8sNamespace} --set-string "env[0].name=AIRFLOW__CORE__LOAD_EXAMPLES" --set-string "env[0].value=True"
 }
 
 $@
