@@ -45,9 +45,10 @@ airflowLoadExamles() {
   helm upgrade --install ${helmName} apache-airflow/airflow --namespace ${k8sNamespace} --set-string "env[0].name=AIRFLOW__CORE__LOAD_EXAMPLES" --set-string "env[0].value=True"
 }
 airflowLocalExecutor() {
-  # TODO manual edit to values.yaml
+  # manual edit to values.yaml
   # - change `.executor` from `CeleryExecutor` to `LocalExecutor`
   # - change `.webserver.service.type` from `ClusterIP` to `LoadBalancer`
+  curl -O https://raw.githubusercontent.com/davidkhala/flow/main/airflow/setup/value-change.yaml
   helm upgrade --install ${helmName} apache-airflow/airflow --namespace ${k8sNamespace} -f value-change.yaml --debug
 }
 
