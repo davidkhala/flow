@@ -21,7 +21,7 @@ airflowEmpty() {
 up() {
   upGKE
   helmRegister
-  airflowLocalExecutor # 
+  airflowLocalExecutor
 }
 down() {
   downAirflow
