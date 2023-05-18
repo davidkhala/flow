@@ -14,3 +14,4 @@
 
 # Build blocks
 Powered by [Astronomer registry](https://registry.astronomer.io/)
+- [DAG to run dbt project and tests](https://registry.astronomer.io/dags/copy_store_failures_bigquery/versions/1.1.0)
