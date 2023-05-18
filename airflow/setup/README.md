@@ -3,3 +3,9 @@
 ```
 ./set.sh up
 ```
+
+# Deploy as ASTRO runtime
+Pre-requisite: $astro, Docker
+```
+astro dev start
+```
