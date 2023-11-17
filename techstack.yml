@@ -1,0 +1,73 @@
+repo_name: davidkhala/flow
+report_id: 0e53eef391f56b80714b681dc41c6cf6
+repo_type: Public
+timestamp: '2023-11-17T00:43:37+00:00'
+requested_by: davidkhala
+provider: github
+branch: main
+detected_tools_count: 6
+tools:
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source: Repo Metadata
+- name: PyPI
+  description: A repository of software for the Python programming language
+  website_url: https://pypi.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Hosted Package Repository
+  image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source: airflow/python/airflow_codegen/requirements.txt
+  last_updated_by: David Liu
+  last_updated_on: 2023-04-11 15:40:25.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source: Repo Metadata
+- name: apache-airflow
+  description: Programmatically author
+  package_url: https://pypi.org/apache-airflow
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20810/default_2f5e681bc003054d9b4d4dce47b5862e8bef9594.png
+  detection_source: airflow/python/airflow_codegen/requirements.txt
+  last_updated_by: David Liu
+  last_updated_on: 2023-04-11 15:40:25.000000000 Z
+- name: pendulum
+  description: Python datetimes made easy
+  package_url: https://pypi.org/pendulum
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20069/default_bb49fb0188726b8922387d8bb6e9b2cd0c3c0ea9.png
+  detection_source: airflow/python/airflow_codegen/requirements.txt
+  last_updated_by: David Liu
+  last_updated_on: 2023-04-11 15:40:25.000000000 Z
